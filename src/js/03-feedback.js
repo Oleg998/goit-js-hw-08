@@ -11,8 +11,8 @@ form.addEventListener('submit', onSubmit);
 function dataSave() {
   const saveData = JSON.parse(localStorage.getItem(KEY_FORM));
   if (saveData) {
-    form.elements.email.value = saveData.email ?? "";
-    form.elements.message.value = saveData.message ?? "";
+    form.elements.email.value = saveData.email ?? '';
+    form.elements.message.value = saveData.message ?? '';
   }
 }
 
@@ -24,7 +24,6 @@ function onInput(evt) {
 
 function onSubmit(evt) {
   evt.preventDefault();
-
   const email = evt.target.email.value;
   const message = evt.target.message.value.trim();
 
@@ -32,7 +31,12 @@ function onSubmit(evt) {
     alert('Please fill in both email and message fields before submitting.');
     return;
   }
-  console.log(formData);
+  const FormSubmit = {
+    email,
+    message,
+  };
+  console.log(FormSubmit);
   evt.target.reset();
+
   localStorage.removeItem(KEY_FORM);
 }
